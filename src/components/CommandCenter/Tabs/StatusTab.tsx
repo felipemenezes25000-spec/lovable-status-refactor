@@ -1,10 +1,10 @@
-import { Card } from '@/components/ui/card';
 import TratativaWidget from '../StatusComponents/TratativaWidget';
 import StatusSummary from '../StatusComponents/StatusSummary';
 import SystemsTable from '../StatusComponents/SystemsTable';
 import MapCountries from '../StatusComponents/MapCountries';
 import PIXHealth from '../StatusComponents/PIXHealth';
 import Timeline from '../StatusComponents/Timeline';
+import AvailabilityCards from '../StatusComponents/AvailabilityCards';
 
 const StatusTab = () => {
   return (
@@ -24,6 +24,9 @@ const StatusTab = () => {
           
           {/* Map & Countries */}
           <MapCountries />
+          
+          {/* Availability Cards */}
+          <AvailabilityCards />
         </div>
         
         {/* Right Column - PIX */}

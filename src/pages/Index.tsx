@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Globe, Settings, Moon, Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 import TopBar from '@/components/CommandCenter/TopBar';
 import StatusTab from '@/components/CommandCenter/Tabs/StatusTab';
+import RotinasTab from '@/components/CommandCenter/Tabs/RotinasTab';
+import ComunicacaoTab from '@/components/CommandCenter/Tabs/ComunicacaoTab';
+import CockpitTab from '@/components/CommandCenter/Tabs/CockpitTab';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Index = () => {
@@ -67,25 +70,16 @@ const Index = () => {
             <StatusTab />
           </TabsContent>
 
-          <TabsContent value="rotinas">
-            <div className="rounded-xl border bg-card p-6">
-              <h2 className="text-xl font-bold">Rotinas de Produção</h2>
-              <p className="mt-2 text-sm text-muted-foreground">Em desenvolvimento...</p>
-            </div>
+          <TabsContent value="rotinas" className="space-y-3">
+            <RotinasTab />
           </TabsContent>
 
-          <TabsContent value="comunicacao">
-            <div className="rounded-xl border bg-card p-6">
-              <h2 className="text-xl font-bold">Comunicação via Teams</h2>
-              <p className="mt-2 text-sm text-muted-foreground">Em desenvolvimento...</p>
-            </div>
+          <TabsContent value="comunicacao" className="space-y-3">
+            <ComunicacaoTab />
           </TabsContent>
 
-          <TabsContent value="cockpit">
-            <div className="rounded-xl border bg-card p-6">
-              <h2 className="text-xl font-bold">Cockpit Operacional</h2>
-              <p className="mt-2 text-sm text-muted-foreground">Em desenvolvimento...</p>
-            </div>
+          <TabsContent value="cockpit" className="space-y-3">
+            <CockpitTab />
           </TabsContent>
 
           <TabsContent value="threshold">
