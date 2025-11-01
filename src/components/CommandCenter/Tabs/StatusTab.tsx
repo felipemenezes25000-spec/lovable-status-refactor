@@ -2,8 +2,6 @@ import TratativaWidget from '../StatusComponents/TratativaWidget';
 import StatusSummary from '../StatusComponents/StatusSummary';
 import SystemsTable from '../StatusComponents/SystemsTable';
 import MapCountries from '../StatusComponents/MapCountries';
-import PIXHealth from '../StatusComponents/PIXHealth';
-import Timeline from '../StatusComponents/Timeline';
 import AvailabilityCards from '../StatusComponents/AvailabilityCards';
 
 const StatusTab = () => {
@@ -15,10 +13,8 @@ const StatusTab = () => {
       {/* Status Summary */}
       <StatusSummary />
       
-      {/* Main Grid */}
-      <div className="grid gap-3 lg:grid-cols-[2fr_1fr]">
-        {/* Left Column */}
-        <div className="space-y-3">
+      {/* Main Content */}
+      <div className="space-y-3">
           {/* Systems Monitored */}
           <SystemsTable />
           
@@ -28,15 +24,7 @@ const StatusTab = () => {
           {/* Availability Cards */}
           <AvailabilityCards />
         </div>
-        
-        {/* Right Column - PIX */}
-        <div>
-          <PIXHealth />
-        </div>
-      </div>
       
-      {/* Timeline */}
-      <Timeline />
     </div>
   );
 };

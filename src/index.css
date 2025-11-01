@@ -8,8 +8,8 @@ All colors MUST be HSL.
 
 @layer base {
 :root {
-    /* BTG Command Center Design System */
-    --background: 216 20% 97%;
+    /* BTG Command Center Design System - Enhanced */
+    --background: 216 25% 96%;
     --foreground: 222 70% 10%;
     
     --card: 0 0% 100%;
@@ -21,6 +21,7 @@ All colors MUST be HSL.
     --primary: 215 67% 39%;
     --primary-foreground: 210 40% 98%;
     --primary-hover: 215 67% 32%;
+    --primary-glow: 215 67% 50%;
     
     --secondary: 210 40% 96%;
     --secondary-foreground: 222 70% 10%;
@@ -37,6 +38,14 @@ All colors MUST be HSL.
     --border: 220 13% 91%;
     --input: 220 13% 91%;
     --ring: 215 67% 39%;
+    
+    /* Enhanced Shadows with 3D effect */
+    --shadow-3d: 0 1px 2px hsl(222 70% 10% / 0.05), 
+                 0 4px 8px hsl(222 70% 10% / 0.08),
+                 0 8px 16px hsl(222 70% 10% / 0.05);
+    --shadow-3d-hover: 0 4px 8px hsl(222 70% 10% / 0.08), 
+                       0 12px 24px hsl(222 70% 10% / 0.12),
+                       0 16px 32px hsl(222 70% 10% / 0.08);
     
     --radius: 0.75rem;
     
@@ -79,19 +88,20 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* BTG Dark Mode - Refined */
+    /* BTG Dark Mode - Enhanced with 3D */
     --background: 222 47% 5%;
     --foreground: 210 40% 98%;
     
-    --card: 220 26% 10%;
+    --card: 220 28% 11%;
     --card-foreground: 210 40% 98%;
     
-    --popover: 220 26% 10%;
+    --popover: 220 28% 11%;
     --popover-foreground: 210 40% 98%;
     
     --primary: 217 91% 65%;
     --primary-foreground: 222 47% 5%;
     --primary-hover: 217 91% 72%;
+    --primary-glow: 217 91% 75%;
     
     --secondary: 217 33% 18%;
     --secondary-foreground: 210 40% 98%;
@@ -108,6 +118,14 @@ All colors MUST be HSL.
     --border: 217 33% 18%;
     --input: 217 33% 18%;
     --ring: 217 91% 65%;
+    
+    /* Dark Mode 3D Shadows */
+    --shadow-3d: 0 1px 3px hsl(0 0% 0% / 0.3), 
+                 0 6px 12px hsl(0 0% 0% / 0.4),
+                 0 12px 24px hsl(0 0% 0% / 0.3);
+    --shadow-3d-hover: 0 4px 8px hsl(0 0% 0% / 0.4), 
+                       0 16px 32px hsl(0 0% 0% / 0.5),
+                       0 24px 48px hsl(0 0% 0% / 0.4);
     
     /* Dark Mode Status Colors */
     --status-up: 142 70% 45%;
@@ -147,6 +165,15 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
     font-feature-settings: "tnum";
     font-variant-numeric: tabular-nums;
+  }
+  
+  /* Enhanced Card Shadows */
+  .card {
+    box-shadow: var(--shadow-3d);
+  }
+  
+  .card:hover {
+    box-shadow: var(--shadow-3d-hover);
   }
 }
 

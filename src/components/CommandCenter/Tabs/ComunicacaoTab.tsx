@@ -4,10 +4,9 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { X } from 'lucide-react';
+import { X, Sparkles } from 'lucide-react';
 
 const ComunicacaoTab = () => {
-  const [tipo, setTipo] = useState('Produto');
   const [prioridade, setPrioridade] = useState('P2');
   const [status, setStatus] = useState('Abertura');
   const [produtos, setProdutos] = useState<string[]>(['BTG Banking']);
@@ -45,35 +44,18 @@ const ComunicacaoTab = () => {
 
   return (
     <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
-      <Card className="p-4">
-        <h2 className="mb-4 text-xl font-bold">Comunicação via Teams</h2>
+      <Card className="p-4 shadow-lg">
+        <h2 className="mb-4 text-xl font-bold">Comunicação</h2>
         <p className="mb-4 text-sm text-muted-foreground">
           Preencha os campos e gere a mensagem de comunicação.
         </p>
 
         <div className="space-y-4">
-          {/* Tipo */}
-          <div>
-            <label className="mb-2 block text-xs font-semibold text-muted-foreground">Tipo</label>
-            <div className="flex gap-2">
-              {['Produto', 'Serviço', 'Canal'].map((t) => (
-                <Button
-                  key={t}
-                  variant={tipo === t ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setTipo(t)}
-                >
-                  {t}
-                </Button>
-              ))}
-            </div>
-          </div>
-
           {/* Prioridade */}
           <div>
             <label className="mb-2 block text-xs font-semibold text-muted-foreground">Prioridade</label>
             <div className="flex gap-2">
-              {['P1', 'P2', 'P3', 'P4', 'P5', 'P6'].map((p) => (
+              {['P1', 'P2', 'P3', 'P4', 'P5'].map((p) => (
                 <Button
                   key={p}
                   variant={prioridade === p ? 'default' : 'outline'}
@@ -175,9 +157,15 @@ const ComunicacaoTab = () => {
 
           {/* Descrição do Impacto */}
           <div>
-            <label className="mb-2 block text-xs font-semibold text-muted-foreground">
-              Descrição do Impacto
-            </label>
+            <div className="mb-2 flex items-center justify-between">
+              <label className="text-xs font-semibold text-muted-foreground">
+                Descrição do Impacto
+              </label>
+              <Button variant="outline" size="sm" className="gap-2">
+                <Sparkles className="h-4 w-4" />
+                Sugestão de IA
+              </Button>
+            </div>
             <Textarea
               placeholder="Descreva o impacto do incidente aos clientes e sistemas..."
               rows={3}
@@ -186,9 +174,15 @@ const ComunicacaoTab = () => {
 
           {/* Ação de Contorno */}
           <div>
-            <label className="mb-2 block text-xs font-semibold text-muted-foreground">
-              Ação de Contorno
-            </label>
+            <div className="mb-2 flex items-center justify-between">
+              <label className="text-xs font-semibold text-muted-foreground">
+                Ação de Contorno
+              </label>
+              <Button variant="outline" size="sm" className="gap-2">
+                <Sparkles className="h-4 w-4" />
+                Sugestão de IA
+              </Button>
+            </div>
             <Textarea
               placeholder="Descreva as ações aplicadas ou planejadas..."
               rows={3}
@@ -205,11 +199,11 @@ const ComunicacaoTab = () => {
       </Card>
 
       {/* Histórico */}
-      <Card className="p-4">
+      <Card className="p-4 shadow-lg">
         <h3 className="mb-4 font-bold">Histórico de Comunicações</h3>
         <div className="space-y-3">
           {comunicacoes.map((com, idx) => (
-            <div key={idx} className="rounded-lg border p-3 hover:bg-accent/5">
+            <div key={idx} className="rounded-lg border p-3 hover:bg-accent/5 transition-all hover:shadow-md">
               <div className="mb-1 flex items-center justify-between">
                 <Badge variant="outline" className="text-xs">
                   {com.ticket}

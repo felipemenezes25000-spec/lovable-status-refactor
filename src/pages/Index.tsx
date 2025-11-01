@@ -5,7 +5,7 @@ import StatusTab from '@/components/CommandCenter/Tabs/StatusTab';
 import RotinasTab from '@/components/CommandCenter/Tabs/RotinasTab';
 import ComunicacaoTab from '@/components/CommandCenter/Tabs/ComunicacaoTab';
 import CockpitTab from '@/components/CommandCenter/Tabs/CockpitTab';
-import ThresholdTab from '@/components/CommandCenter/Tabs/ThresholdTab';
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Index = () => {
@@ -59,12 +59,11 @@ const Index = () => {
 
       <main className="mx-auto max-w-[1680px] p-3">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
-          <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid">
+          <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-grid">
             <TabsTrigger value="status">Status Operacional</TabsTrigger>
             <TabsTrigger value="rotinas">Rotinas de Produção</TabsTrigger>
             <TabsTrigger value="comunicacao">Comunicação</TabsTrigger>
             <TabsTrigger value="cockpit">Cockpit Operacional</TabsTrigger>
-            <TabsTrigger value="threshold">Threshold Dinâmico</TabsTrigger>
           </TabsList>
 
           <TabsContent value="status" className="space-y-3">
@@ -81,10 +80,6 @@ const Index = () => {
 
           <TabsContent value="cockpit" className="space-y-3">
             <CockpitTab />
-          </TabsContent>
-
-          <TabsContent value="threshold" className="space-y-3">
-            <ThresholdTab />
           </TabsContent>
         </Tabs>
       </main>
