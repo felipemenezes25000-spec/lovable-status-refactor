@@ -5,6 +5,7 @@ import StatusTab from '@/components/CommandCenter/Tabs/StatusTab';
 import RotinasTab from '@/components/CommandCenter/Tabs/RotinasTab';
 import ComunicacaoTab from '@/components/CommandCenter/Tabs/ComunicacaoTab';
 import CockpitTab from '@/components/CommandCenter/Tabs/CockpitTab';
+import ThresholdTab from '@/components/CommandCenter/Tabs/ThresholdTab';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Index = () => {
@@ -82,11 +83,8 @@ const Index = () => {
             <CockpitTab />
           </TabsContent>
 
-          <TabsContent value="threshold">
-            <div className="rounded-xl border bg-card p-6">
-              <h2 className="text-xl font-bold">Threshold Dinâmico</h2>
-              <p className="mt-2 text-sm text-muted-foreground">Em desenvolvimento...</p>
-            </div>
+          <TabsContent value="threshold" className="space-y-3">
+            <ThresholdTab />
           </TabsContent>
         </Tabs>
       </main>
