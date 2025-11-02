@@ -5,6 +5,7 @@ import StatusTab from '@/components/CommandCenter/Tabs/StatusTab';
 import RotinasTab from '@/components/CommandCenter/Tabs/RotinasTab';
 import ComunicacaoTab from '@/components/CommandCenter/Tabs/ComunicacaoTab';
 import CockpitTab from '@/components/CommandCenter/Tabs/CockpitTab';
+import btgLogo from '@/assets/btg-pactual.svg';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -36,9 +37,9 @@ const Index = () => {
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <img 
-                src="https://www.btgpactual.com/content/dam/pactual-public/logos/btg-logo-blue.svg" 
+                src={btgLogo} 
                 alt="BTG Pactual" 
-                className="h-7"
+                className="h-8 w-auto"
               />
               <div className="flex items-center gap-2">
                 <h1 className="text-lg font-bold text-foreground">Command Center</h1>
