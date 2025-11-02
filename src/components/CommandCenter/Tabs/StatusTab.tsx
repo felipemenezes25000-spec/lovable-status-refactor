@@ -6,18 +6,18 @@ import AvailabilityCards from '../StatusComponents/AvailabilityCards';
 
 const StatusTab = () => {
   return (
-    <div className="space-y-4">
-      {/* Top Section: Tratativa Widget + Status Summary */}
-      <div className="grid gap-4 lg:grid-cols-[1fr_2fr]">
+    <div className="space-y-6">
+      {/* Seção Principal: Métricas de Alto Nível */}
+      <div className="grid gap-4 lg:grid-cols-[350px_1fr]">
         <TratativaWidget />
         <StatusSummary />
       </div>
       
-      {/* Systems Monitored Table */}
+      {/* Tabela de Sistemas - Destaque Principal */}
       <SystemsTable />
       
-      {/* Grid Section: Map & Availability */}
-      <div className="grid gap-4 lg:grid-cols-2">
+      {/* Grid Duplo: Status Global e Disponibilidade */}
+      <div className="grid gap-4 xl:grid-cols-[45%_55%]">
         <MapCountries />
         <AvailabilityCards />
       </div>

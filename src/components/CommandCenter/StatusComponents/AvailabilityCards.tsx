@@ -30,16 +30,17 @@ const AvailabilityCard = ({ title, services }: AvailabilityCardProps) => {
   };
 
   return (
-    <Card className="p-3">
-      <div className="mb-2 flex items-center justify-between">
+    <Card className="border-l-4 border-l-primary/30 p-4 shadow-sm transition-all hover:shadow-md">
+      <div className="mb-3 flex items-center justify-between">
         <div>
-          <h4 className="font-bold">{title}</h4>
-          <p className="text-xs text-muted-foreground">Última 1h</p>
+          <h4 className="text-base font-bold">{title}</h4>
+          <p className="text-xs font-medium text-muted-foreground">Última 1h</p>
         </div>
         <Button
           variant={expanded ? 'default' : 'outline'}
           size="sm"
           onClick={() => setExpanded(!expanded)}
+          className="shadow-sm transition-all"
         >
           {expanded ? (
             <>
@@ -54,7 +55,7 @@ const AvailabilityCard = ({ title, services }: AvailabilityCardProps) => {
       </div>
 
       {expanded && (
-        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+        <div className="mt-4 grid gap-3 border-t pt-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
           {services.map((service) => {
             const color = getColor(service.pct);
             const label = getLabel(service.pct);
@@ -62,18 +63,18 @@ const AvailabilityCard = ({ title, services }: AvailabilityCardProps) => {
             return (
               <div
                 key={service.key}
-                className="cursor-pointer rounded-lg border p-2 hover:bg-accent/5"
+                className="group cursor-pointer rounded-lg border bg-gradient-to-br from-card to-card/50 p-3 shadow-sm transition-all hover:scale-[1.02] hover:shadow-md"
               >
-                <div className="mb-1 flex items-center justify-between">
-                  <div className="text-sm font-semibold">{service.name}</div>
-                  <div className="text-sm font-bold" style={{ color }}>
+                <div className="mb-2 flex items-center justify-between">
+                  <div className="text-sm font-semibold text-foreground">{service.name}</div>
+                  <div className="text-base font-bold transition-transform group-hover:scale-110" style={{ color }}>
                     {service.pct.toFixed(2)}%
                   </div>
                 </div>
 
-                <div className="mb-2 h-2 overflow-hidden rounded-full bg-muted">
+                <div className="mb-2 h-2.5 overflow-hidden rounded-full bg-muted shadow-inner">
                   <div
-                    className="h-full transition-all"
+                    className="h-full transition-all duration-500"
                     style={{
                       width: `${Math.min(100, service.pct)}%`,
                       backgroundColor: color,
@@ -82,13 +83,16 @@ const AvailabilityCard = ({ title, services }: AvailabilityCardProps) => {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="status-pill text-[10px]" style={{ 
-                    background: `${color}20`,
-                    color 
-                  }}>
+                  <span 
+                    className="rounded-md px-2 py-1 text-[10px] font-semibold uppercase tracking-wide" 
+                    style={{ 
+                      background: `${color}20`,
+                      color 
+                    }}
+                  >
                     {label}
                   </span>
-                  <span className="text-xs text-muted-foreground">ref. 1h</span>
+                  <span className="text-[10px] font-medium text-muted-foreground">ref. 1h</span>
                 </div>
               </div>
             );
@@ -132,15 +136,13 @@ const AvailabilityCards = () => {
   ];
 
   return (
-    <Card className="p-4">
-      <div className="mb-4 flex items-center justify-between">
-        <div>
-          <h3 className="font-bold">Disponibilidade de Aplicativos</h3>
-          <p className="text-xs text-muted-foreground">Última 1h</p>
-        </div>
+    <Card className="p-5 shadow-md">
+      <div className="mb-5 border-b pb-3">
+        <h3 className="text-lg font-bold">Disponibilidade de Aplicativos</h3>
+        <p className="text-xs text-muted-foreground">Monitoramento de disponibilidade por produto (última 1h)</p>
       </div>
 
-      <div className="grid gap-3">
+      <div className="grid gap-4">
         <AvailabilityCard title="BTG Banking" services={bankingServices} />
         <AvailabilityCard title="BTG Investimentos" services={investServices} />
         <AvailabilityCard title="BTG Empresas" services={empServices} />

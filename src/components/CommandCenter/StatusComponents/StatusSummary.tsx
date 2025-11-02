@@ -11,15 +11,21 @@ const StatusSummary = () => {
   ];
   
   return (
-    <Card className="p-4">
-      <h3 className="mb-4 font-bold">Resumo Operacional</h3>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+    <Card className="p-5 shadow-md">
+      <div className="mb-4 border-b pb-3">
+        <h3 className="text-lg font-bold">Resumo Operacional</h3>
+        <p className="text-xs text-muted-foreground">Visão geral de todos os produtos</p>
+      </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-6">
         {stats.map((stat, idx) => (
-          <div key={idx} className="flex flex-col items-center justify-center rounded-lg border bg-card/50 p-3 text-center transition-all hover:bg-accent/10">
-            <div className={`text-2xl font-bold ${stat.color}`}>
+          <div 
+            key={idx} 
+            className="group flex flex-col items-center justify-center rounded-lg border bg-gradient-to-br from-card to-card/50 p-4 text-center shadow-sm transition-all hover:scale-105 hover:shadow-lg"
+          >
+            <div className={`text-3xl font-bold transition-transform group-hover:scale-110 ${stat.color || 'text-foreground'}`}>
               {stat.value}
             </div>
-            <div className="text-xs text-muted-foreground">
+            <div className="mt-1 text-xs font-medium text-muted-foreground">
               {stat.label}
             </div>
           </div>

@@ -33,15 +33,18 @@ const TratativaWidget = () => {
   }, []);
   
   return (
-    <Card className="overflow-hidden border-none bg-gradient-to-br from-primary/90 to-primary p-4 text-primary-foreground shadow-lg">
-      <h3 className="mb-3 text-center font-bold">Tempo de Tratativa 24x7</h3>
+    <Card className="overflow-hidden border-none bg-gradient-to-br from-primary via-primary/95 to-primary/80 p-5 text-primary-foreground shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+      <div className="mb-3 border-b border-primary-foreground/20 pb-2">
+        <h3 className="text-center text-base font-bold">Tempo de Tratativa 24x7</h3>
+        <p className="text-center text-xs opacity-80">Monitoramento contínuo</p>
+      </div>
       
-      <div className="space-y-3">
+      <div className="space-y-4">
         {/* Sparkline */}
-        <div className="flex justify-center">
+        <div className="flex justify-center rounded-lg bg-background/10 p-3 backdrop-blur-sm">
           <svg
             ref={canvasRef}
-            className="h-20 w-full max-w-[200px]"
+            className="h-16 w-full max-w-[180px]"
             viewBox="0 0 120 64"
             preserveAspectRatio="none"
           >
@@ -49,40 +52,40 @@ const TratativaWidget = () => {
               id="tratLine"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="2.5"
               points=""
-              opacity="0.8"
+              opacity="0.9"
             />
             <circle
               id="tratDot"
               cx="0"
               cy="0"
-              r="3"
+              r="4"
               fill="currentColor"
             />
           </svg>
         </div>
         
         {/* Metrics Grid */}
-        <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-lg bg-background/10 p-2 text-center backdrop-blur-sm">
-            <div className="text-xl font-bold">00:00:57</div>
-            <div className="text-xs opacity-80">Tempo Médio</div>
+        <div className="grid grid-cols-2 gap-2">
+          <div className="rounded-lg bg-background/15 p-3 text-center shadow-sm backdrop-blur-sm transition-all hover:bg-background/20">
+            <div className="text-2xl font-bold">00:00:57</div>
+            <div className="mt-1 text-[10px] font-medium uppercase tracking-wider opacity-90">Tempo Médio</div>
           </div>
           
-          <div className="rounded-lg bg-background/10 p-2 text-center backdrop-blur-sm">
-            <div className="text-xl font-bold">80</div>
-            <div className="text-xs opacity-80">Incidentes</div>
+          <div className="rounded-lg bg-background/15 p-3 text-center shadow-sm backdrop-blur-sm transition-all hover:bg-background/20">
+            <div className="text-2xl font-bold">80</div>
+            <div className="mt-1 text-[10px] font-medium uppercase tracking-wider opacity-90">Incidentes</div>
           </div>
           
-          <div className="rounded-lg bg-background/10 p-2 text-center backdrop-blur-sm">
-            <div className="text-sm font-bold text-emerald-300">00:00:54</div>
-            <div className="text-xs opacity-80">Meta P2: 4min</div>
+          <div className="rounded-lg bg-background/15 p-3 text-center shadow-sm backdrop-blur-sm transition-all hover:bg-background/20">
+            <div className="text-base font-bold text-emerald-200">00:00:54</div>
+            <div className="mt-1 text-[9px] font-medium uppercase tracking-wider opacity-90">Meta P2: 4min</div>
           </div>
           
-          <div className="rounded-lg bg-background/10 p-2 text-center backdrop-blur-sm">
-            <div className="text-sm font-bold text-red-300">00:04:56</div>
-            <div className="text-xs opacity-80">Meta P1: 4min</div>
+          <div className="rounded-lg bg-background/15 p-3 text-center shadow-sm backdrop-blur-sm transition-all hover:bg-background/20">
+            <div className="text-base font-bold text-red-200">00:04:56</div>
+            <div className="mt-1 text-[9px] font-medium uppercase tracking-wider opacity-90">Meta P1: 4min</div>
           </div>
         </div>
       </div>
