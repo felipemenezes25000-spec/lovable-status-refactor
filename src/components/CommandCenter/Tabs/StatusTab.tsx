@@ -6,25 +6,21 @@ import AvailabilityCards from '../StatusComponents/AvailabilityCards';
 
 const StatusTab = () => {
   return (
-    <div className="space-y-3">
-      {/* Tratativa 24x7 Widget */}
-      <TratativaWidget />
+    <div className="space-y-4">
+      {/* Top Section: Tratativa Widget + Status Summary */}
+      <div className="grid gap-4 lg:grid-cols-[1fr_2fr]">
+        <TratativaWidget />
+        <StatusSummary />
+      </div>
       
-      {/* Status Summary */}
-      <StatusSummary />
+      {/* Systems Monitored Table */}
+      <SystemsTable />
       
-      {/* Main Content */}
-      <div className="space-y-3">
-          {/* Systems Monitored */}
-          <SystemsTable />
-          
-          {/* Map & Countries */}
-          <MapCountries />
-          
-          {/* Availability Cards */}
-          <AvailabilityCards />
-        </div>
-      
+      {/* Grid Section: Map & Availability */}
+      <div className="grid gap-4 lg:grid-cols-2">
+        <MapCountries />
+        <AvailabilityCards />
+      </div>
     </div>
   );
 };

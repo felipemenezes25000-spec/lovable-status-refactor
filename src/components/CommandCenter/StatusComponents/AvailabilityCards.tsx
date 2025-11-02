@@ -132,13 +132,15 @@ const AvailabilityCards = () => {
   ];
 
   return (
-    <Card className="p-3">
-      <div className="mb-3 flex items-center justify-between">
-        <h3 className="font-bold">Aplicativos • Disponibilidade</h3>
-        <span className="text-xs text-muted-foreground">Última 1h</span>
+    <Card className="p-4">
+      <div className="mb-4 flex items-center justify-between">
+        <div>
+          <h3 className="font-bold">Disponibilidade de Aplicativos</h3>
+          <p className="text-xs text-muted-foreground">Última 1h</p>
+        </div>
       </div>
 
-      <div className="grid gap-3 lg:grid-cols-2">
+      <div className="grid gap-3">
         <AvailabilityCard title="BTG Banking" services={bankingServices} />
         <AvailabilityCard title="BTG Investimentos" services={investServices} />
         <AvailabilityCard title="BTG Empresas" services={empServices} />

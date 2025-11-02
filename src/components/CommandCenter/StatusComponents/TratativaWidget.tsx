@@ -33,55 +33,56 @@ const TratativaWidget = () => {
   }, []);
   
   return (
-    <Card className="border-none bg-gradient-to-br from-slate-900 to-slate-800 p-3 text-blue-50">
-      <div className="mb-2 text-center text-sm font-bold text-blue-200">
-        Tempo de Tratativa 24x7
-      </div>
+    <Card className="overflow-hidden border-none bg-gradient-to-br from-primary/90 to-primary p-4 text-primary-foreground shadow-lg">
+      <h3 className="mb-3 text-center font-bold">Tempo de Tratativa 24x7</h3>
       
-      <div className="grid grid-cols-[120px_1fr] items-center gap-3">
+      <div className="space-y-3">
         {/* Sparkline */}
-        <svg
-          ref={canvasRef}
-          className="h-16 w-[120px]"
-          viewBox="0 0 120 64"
-          preserveAspectRatio="none"
-        >
-          <polyline
-            id="tratLine"
-            fill="none"
-            stroke="#2fb3ff"
-            strokeWidth="2"
-            points=""
-          />
-          <circle
-            id="tratDot"
-            cx="0"
-            cy="0"
-            r="3"
-            fill="#2fb3ff"
-          />
-        </svg>
+        <div className="flex justify-center">
+          <svg
+            ref={canvasRef}
+            className="h-20 w-full max-w-[200px]"
+            viewBox="0 0 120 64"
+            preserveAspectRatio="none"
+          >
+            <polyline
+              id="tratLine"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              points=""
+              opacity="0.8"
+            />
+            <circle
+              id="tratDot"
+              cx="0"
+              cy="0"
+              r="3"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
         
-        {/* Metrics */}
-        <div className="grid grid-cols-4 gap-3">
-          <div className="space-y-0.5">
-            <div className="text-lg font-bold">00:00:57</div>
-            <div className="text-xs text-blue-300">Tempo Médio</div>
+        {/* Metrics Grid */}
+        <div className="grid grid-cols-2 gap-3">
+          <div className="rounded-lg bg-background/10 p-2 text-center backdrop-blur-sm">
+            <div className="text-xl font-bold">00:00:57</div>
+            <div className="text-xs opacity-80">Tempo Médio</div>
           </div>
           
-          <div className="space-y-0.5">
-            <div className="text-sm font-bold">80</div>
-            <div className="text-xs text-blue-300">Incidentes</div>
+          <div className="rounded-lg bg-background/10 p-2 text-center backdrop-blur-sm">
+            <div className="text-xl font-bold">80</div>
+            <div className="text-xs opacity-80">Incidentes</div>
           </div>
           
-          <div className="space-y-0.5">
-            <div className="text-sm font-bold text-emerald-400">00:00:54</div>
-            <div className="text-xs text-blue-300">Meta P2: 4min</div>
+          <div className="rounded-lg bg-background/10 p-2 text-center backdrop-blur-sm">
+            <div className="text-sm font-bold text-emerald-300">00:00:54</div>
+            <div className="text-xs opacity-80">Meta P2: 4min</div>
           </div>
           
-          <div className="space-y-0.5">
-            <div className="text-sm font-bold text-red-400">00:04:56</div>
-            <div className="text-xs text-blue-300">Meta P1: 4min</div>
+          <div className="rounded-lg bg-background/10 p-2 text-center backdrop-blur-sm">
+            <div className="text-sm font-bold text-red-300">00:04:56</div>
+            <div className="text-xs opacity-80">Meta P1: 4min</div>
           </div>
         </div>
       </div>

@@ -60,11 +60,14 @@ const SystemsTable = () => {
     };
     return <span className={classes}>{labels[status as keyof typeof labels]}</span>;
   };
-  return <Card className="p-3">
-      <div className="mb-3 flex items-center justify-between">
-        <h3 className="font-bold">Sistemas monitorados</h3>
+  return <Card className="p-4">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h3 className="font-bold">Sistemas Monitorados</h3>
+          <p className="text-xs text-muted-foreground">Monitoramento em tempo real</p>
+        </div>
         <label className="flex items-center gap-2 text-sm text-muted-foreground">
-          <input type="checkbox" checked={showOnlyProblems} onChange={e => setShowOnlyProblems(e.target.checked)} className="h-4 w-4 rounded border-gray-300" />
+          <input type="checkbox" checked={showOnlyProblems} onChange={e => setShowOnlyProblems(e.target.checked)} className="h-4 w-4 rounded border-input" />
           Mostrar apenas problemas
         </label>
       </div>
