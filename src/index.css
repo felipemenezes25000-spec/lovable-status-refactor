@@ -204,18 +204,31 @@ All colors MUST be HSL.
     color: hsl(var(--status-maintenance));
   }
   
-  /* Ticker Animation */
+  /* Ticker Animation - Smoother */
   @keyframes ticker-scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
   
   .ticker-animate {
-    animation: ticker-scroll 45s linear infinite;
+    animation: ticker-scroll 60s linear infinite;
+    will-change: transform;
   }
   
   .ticker-animate:hover {
     animation-play-state: paused;
+  }
+
+  /* Pulse Animation for Live Indicators */
+  @keyframes pulse-glow {
+    0%, 100% { 
+      opacity: 1;
+      box-shadow: 0 0 8px currentColor;
+    }
+    50% { 
+      opacity: 0.6;
+      box-shadow: 0 0 16px currentColor;
+    }
   }
   
   /* Card Variants */

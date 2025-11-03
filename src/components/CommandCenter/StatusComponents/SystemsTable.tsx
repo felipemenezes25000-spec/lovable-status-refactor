@@ -60,6 +60,92 @@ const SystemsTable = () => {
     };
     return <span className={classes}>{labels[status as keyof typeof labels]}</span>;
   };
-  return;
+  return (
+    <Card className="overflow-hidden p-5 shadow-lg">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b pb-4">
+        <div>
+          <h3 className="text-lg font-bold text-foreground">Sistemas Monitorados</h3>
+          <p className="text-xs text-muted-foreground">Monitoramento em tempo real de performance</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <label className="flex cursor-pointer items-center gap-2 rounded-lg border bg-muted/50 px-3 py-2 text-sm font-medium transition-colors hover:bg-muted">
+            <input
+              type="checkbox"
+              checked={showOnlyProblems}
+              onChange={(e) => setShowOnlyProblems(e.target.checked)}
+              className="h-4 w-4 cursor-pointer rounded border-border accent-primary"
+            />
+            <span>Apenas com problemas</span>
+          </label>
+          <div className="rounded-lg bg-muted px-3 py-2 text-sm">
+            <span className="font-bold text-foreground">{filteredSystems.length}</span>
+            <span className="ml-1 text-muted-foreground">sistemas</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b bg-muted/30">
+              <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground">Sistema</th>
+              <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground">Status</th>
+              <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-muted-foreground">Última Verificação</th>
+              <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-muted-foreground">P95 (ms)</th>
+              <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-muted-foreground">Erros (%)</th>
+              <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-muted-foreground">TPS</th>
+              <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-muted-foreground">Uptime (%)</th>
+              <th className="px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-muted-foreground">Região</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            {filteredSystems.map((sys) => {
+              const p95Color = sys.p95 > 200 ? 'text-status-down' : sys.p95 > 150 ? 'text-status-degraded' : 'text-status-up';
+              const errColor = sys.err > 1 ? 'text-status-down' : sys.err > 0.5 ? 'text-status-degraded' : 'text-status-up';
+              const uptimeColor = sys.uptime < 99 ? 'text-status-down' : sys.uptime < 99.5 ? 'text-status-degraded' : 'text-status-up';
+
+              return (
+                <tr key={sys.name} className="group transition-colors hover:bg-muted/40">
+                  <td className="px-4 py-4">
+                    <div className="flex flex-col">
+                      <div className="font-semibold text-foreground group-hover:text-primary">{sys.name}</div>
+                      <div className="text-xs text-muted-foreground">{sys.owner} • {sys.kind}</div>
+                    </div>
+                  </td>
+                  <td className="px-4 py-4">
+                    {getStatusPill(sys.status)}
+                  </td>
+                  <td className="px-4 py-4 text-sm text-muted-foreground">{sys.last}</td>
+                  <td className={`px-4 py-4 text-right text-sm font-bold tabular-nums ${p95Color}`}>
+                    {sys.p95}ms
+                  </td>
+                  <td className={`px-4 py-4 text-right text-sm font-bold tabular-nums ${errColor}`}>
+                    {sys.err.toFixed(2)}%
+                  </td>
+                  <td className="px-4 py-4 text-right text-sm font-semibold tabular-nums text-foreground">
+                    {sys.tps.toLocaleString()}
+                  </td>
+                  <td className={`px-4 py-4 text-right text-sm font-bold tabular-nums ${uptimeColor}`}>
+                    {sys.uptime.toFixed(2)}%
+                  </td>
+                  <td className="px-4 py-4 text-center">
+                    <span className="inline-flex rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-foreground">
+                      {sys.region}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      {filteredSystems.length === 0 && (
+        <div className="py-12 text-center">
+          <p className="text-sm font-medium text-muted-foreground">Nenhum sistema encontrado com os filtros aplicados</p>
+        </div>
+      )}
+    </Card>
+  );
 };
 export default SystemsTable;

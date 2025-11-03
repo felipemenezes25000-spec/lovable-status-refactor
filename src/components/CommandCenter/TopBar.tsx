@@ -66,54 +66,70 @@ const TopBar = () => {
 
   const getStatusColor = (status: string) => {
     const colors = {
-      ok: 'bg-emerald-500',
-      warn: 'bg-amber-500',
-      err: 'bg-red-500',
-      info: 'bg-blue-500',
+      ok: 'hsl(var(--status-up))',
+      warn: 'hsl(var(--status-degraded))',
+      err: 'hsl(var(--status-down))',
+      info: 'hsl(var(--status-maintenance))',
     };
     return colors[status as keyof typeof colors] || colors.ok;
   };
 
   return (
-    <div className="sticky top-0 z-[100] border-b bg-[hsl(var(--ticker-bg))] text-[hsl(var(--ticker-text))]">
-      {/* World Clocks */}
-      <div className="border-b border-white/15 bg-[hsl(var(--ticker-bg))]">
-        <div className="mx-auto flex max-w-[1680px] items-center gap-2 overflow-hidden px-2 py-1.5">
-          {clocks.map((clock, idx) => (
-            <div
-              key={idx}
-              className="flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-1.5"
-            >
-              <span className="text-xs font-bold uppercase tracking-wide text-blue-200">
-                {clock.label}
+    <div className="sticky top-0 z-50 border-b shadow-lg" style={{ background: 'linear-gradient(135deg, hsl(var(--ticker-bg)) 0%, hsl(215 100% 18%) 100%)' }}>
+      <div className="mx-auto max-w-[1680px]">
+        {/* World Clocks Section - Enhanced */}
+        <div className="border-b border-white/10 px-4 py-2.5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 animate-pulse rounded-full bg-status-up shadow-lg" />
+              <span className="text-xs font-bold uppercase tracking-wider" style={{ color: 'hsl(var(--ticker-text))' }}>
+                World Time
               </span>
-              <span className="font-mono text-sm font-bold tabular-nums">
-                {times[clock.tz] || '--:--:--'}
-              </span>
-              <span className="text-xs opacity-90">({clock.abbr})</span>
             </div>
-          ))}
+            <div className="flex flex-wrap items-center gap-6">
+              {clocks.map((clock) => (
+                <div key={clock.tz} className="group flex items-center gap-2 transition-transform hover:scale-105">
+                  <div className="flex flex-col">
+                    <div className="text-xs font-medium opacity-75" style={{ color: 'hsl(var(--ticker-text))' }}>
+                      {clock.label}
+                    </div>
+                    <div className="font-mono text-sm font-bold tabular-nums tracking-tight" style={{ color: 'hsl(var(--ticker-text))' }}>
+                      {times[clock.tz] || '--:--:--'}
+                    </div>
+                  </div>
+                  <div className="rounded-md bg-white/10 px-1.5 py-0.5 text-[10px] font-bold" style={{ color: 'hsl(var(--ticker-text))' }}>
+                    {clock.abbr}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Status Ticker */}
-      <div className="border-b border-white/15 bg-[hsl(var(--ticker-bg))]">
-        <div className="mx-auto max-w-[1680px] overflow-hidden px-2 py-1.5">
+        {/* Status Ticker Section - Enhanced */}
+        <div className="relative overflow-hidden px-4 py-2">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 rounded-lg bg-primary px-2 py-1">
-              <Activity className="h-3 w-3" />
-              <span className="text-xs font-bold uppercase tracking-wider">Status</span>
+            <div className="flex shrink-0 items-center gap-2 rounded-lg bg-white/10 px-3 py-1.5 backdrop-blur-sm">
+              <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-status-up" />
+              <span className="text-xs font-bold uppercase tracking-wider" style={{ color: 'hsl(var(--ticker-text))' }}>
+                Live Status
+              </span>
             </div>
             
-            <div className="relative flex-1 overflow-hidden">
-              <div className="ticker-animate inline-flex gap-4">
-                {[...tickerData, ...tickerData, ...tickerData].map((item, idx) => (
+            <div className="flex-1 overflow-hidden">
+              <div className="ticker-animate flex gap-6">
+                {[...tickerData, ...tickerData].map((item, idx) => (
                   <div
                     key={idx}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1"
+                    className="group flex shrink-0 items-center gap-2 transition-transform hover:scale-105"
                   >
-                    <span className={`h-2 w-2 rounded-full ${getStatusColor(item.status)}`} />
-                    <span className="whitespace-nowrap text-sm font-semibold">{item.label}</span>
+                    <div
+                      className="h-1.5 w-1.5 rounded-full shadow-lg transition-all group-hover:scale-150"
+                      style={{ backgroundColor: getStatusColor(item.status) }}
+                    />
+                    <span className="whitespace-nowrap text-sm font-semibold" style={{ color: 'hsl(var(--ticker-text))' }}>
+                      {item.label}
+                    </span>
                   </div>
                 ))}
               </div>
